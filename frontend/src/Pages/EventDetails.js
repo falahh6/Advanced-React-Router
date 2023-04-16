@@ -1,10 +1,9 @@
-import {useLoaderData, json } from "react-router-dom";
+import { useRouteLoaderData, json } from "react-router-dom";
 import EventItem from '../components/EventItem';
 const EventDetails = () => {
-    const data = useLoaderData();
-
+    const data = useRouteLoaderData('event-details');
     return <>
-    <EventItem event={data.event}/>
+    <EventItem event={data.event} />
     </> 
 }
 
@@ -18,6 +17,7 @@ export const loader = async ({request , params}) => {
     if(!response.ok){
         throw json({message : 'Event Details could not be displayed'}, {status : 500})
     } else {
-        return response;
+        const data = response.json();
+        return data;
     }
 }

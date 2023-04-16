@@ -1,12 +1,14 @@
 .form {
   max-width: 40rem;
   margin: 2rem auto;
+
 }
 
 .form label,
 .form input,
 .form textarea {
   display: block;
+  text-align: left;
   width: 100%;
 }
 

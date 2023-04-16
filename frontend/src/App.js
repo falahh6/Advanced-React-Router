@@ -20,8 +20,10 @@ function App() {
         { path : '/events' , element : <EventRoot />, children : [
           { path : '/events', element : <Events /> , loader : eventsLoader },
           { path : 'new', element : <NewEvents />},
-          { path : ':eID', element : <EventDetails />, loader : eventDetailsLoader},
-          { path : ':eID/edit', element : <EditEvents />}
+          { path : ':eID', id : 'event-details', loader : eventDetailsLoader, children : [
+            { index : true, element : <EventDetails />  },
+            { path : 'edit', element : <EditEvents /> }
+          ]}
         ] },
       ]
     }
