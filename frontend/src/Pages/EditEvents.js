@@ -1,11 +1,7 @@
-import { useParams } from "react-router-dom";
-
+import EventForm from '../components/EventForm';
 const EditEvent = () => {
-    const params = useParams();
-    console.log(params);
     return <>
-        <h1>This is Events Editing Page</h1>
-        <p>{params.eID}</p>
+        <EventForm />
     </>  
 
 }
