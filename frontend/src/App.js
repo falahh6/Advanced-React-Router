@@ -3,7 +3,7 @@ import Root from './Pages/Root';
 import Events, { eventsLoader } from './Pages/Events';
 import Home from './Pages/Home';
 import NewEvents, { newEventAction } from './Pages/NewEvents';
-import EventDetails, { loader as eventDetailsLoader} from './Pages/EventDetails';
+import EventDetails, { loader as eventDetailsLoader, eventDetailsAction} from './Pages/EventDetails';
 import EventRoot from './Pages/EventRoot';
 import EditEvents from './Pages/EditEvents';
 import Error from './Pages/Error';
@@ -20,7 +20,7 @@ function App() {
         { path : '/events' , element : <EventRoot />, children : [
           { path : '/events', element : <Events /> , loader : eventsLoader },
           { path : ':eID', id : 'event-details', loader : eventDetailsLoader, children : [
-            { index : true, element : <EventDetails /> , },
+            { index : true, element : <EventDetails /> , action : eventDetailsAction },
             { path : 'edit', element : <EditEvents /> }
           ]},
           { path : 'new', element : <NewEvents />, action : newEventAction},
