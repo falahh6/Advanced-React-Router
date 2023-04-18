@@ -2,11 +2,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './Pages/Root';
 import Events, { eventsLoader } from './Pages/Events';
 import Home from './Pages/Home';
-import NewEvents, { newEventAction } from './Pages/NewEvents';
+import NewEvents from './Pages/NewEvents';
 import EventDetails, { loader as eventDetailsLoader, eventDetailsAction} from './Pages/EventDetails';
 import EventRoot from './Pages/EventRoot';
 import EditEvents from './Pages/EditEvents';
 import Error from './Pages/Error';
+import  { newEventAction } from './components/EventForm';
 
 function App() {
   
@@ -21,7 +22,7 @@ function App() {
           { path : '/events', element : <Events /> , loader : eventsLoader },
           { path : ':eID', id : 'event-details', loader : eventDetailsLoader, children : [
             { index : true, element : <EventDetails /> , action : eventDetailsAction },
-            { path : 'edit', element : <EditEvents /> }
+            { path : 'edit', element : <EditEvents />, action : newEventAction}
           ]},
           { path : 'new', element : <NewEvents />, action : newEventAction},
         ] },
